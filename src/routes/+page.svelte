@@ -1,12 +1,14 @@
 <script lang="ts">
-    export let data;
-	console.log(data)
+	import type { PageData } from "./$types";
+
+
+    export let data:PageData;
 </script>
 
 {#if data.user}
 <article>
 	<header>Header</header>
-	<h1>Hello {data.user.name}</h1>
+	<h1>Hello {data.user.email}</h1>
 	<footer>Footer</footer>
 </article>
 {:else}

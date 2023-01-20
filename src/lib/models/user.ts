@@ -1,4 +1,5 @@
 export interface User{
+    name:string
     username:string
     email:string
     password:string
@@ -25,6 +26,7 @@ export const createSession = async (user:User):Promise<string> => {
         body:JSON.stringify(user)
     });
     let data = await response.json()
+    console.log(data)
     if(!data.Success)
         return ""
     return data.ID
@@ -34,4 +36,16 @@ export const getAllUserTest = async () => {
     //buscar en api
     let users = await fetch('http://localhost:8080/users/').then(x => x.json()) as Array<User>
     console.log(users)
+}
+
+export const RegisterUser = async(user:User) => {
+    let response = await fetch('http://localhost:8080/users/', {
+        method:'POST',
+        body:JSON.stringify(user)
+    });
+    let data = await response.json()
+    console.log(data)
+    if(!data.Success)
+        return undefined
+    return data.ID
 }

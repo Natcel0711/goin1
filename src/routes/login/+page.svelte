@@ -8,7 +8,7 @@
 	<form action="?/login" method="post">
 		<!-- Grid -->
 		<label for="email">Email address</label>
-		<input type="email" id="email" name="email" placeholder="Email address" required />
+		<input type="email" value={data.email ?? ''} id="email" name="email" placeholder="Email address" required />
 		<small>We'll never share your email with anyone else.</small>
 
 		<!-- Markup example 2: input is after label -->
