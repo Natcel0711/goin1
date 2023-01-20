@@ -7,14 +7,14 @@
 
 {#if data.user}
 <article>
-	<header>Header</header>
-	<h1>Hello {data.user.email}</h1>
-	<footer>Footer</footer>
+	<header></header>
+	<h1>Hello {data.user.name}</h1>
+	<footer></footer>
 </article>
 {:else}
 <article>
-	<header>Header</header>
-	<a href="/login" role="button">Link</a>
-	<footer>Footer</footer>
+	<header></header>
+	<a href="/login" role="button">Register</a>
+	<footer></footer>
 </article>
 {/if}

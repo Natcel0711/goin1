@@ -23,7 +23,6 @@ export const actions:Actions = {
                 error:true,
                 email:data.email
             }
-        cookies.set('sessionid', await createSession(user))
-        throw redirect(303, "/")
+        throw redirect(303, "/login")
     }
 }

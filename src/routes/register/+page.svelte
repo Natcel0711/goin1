@@ -4,8 +4,12 @@
 
     export let data:PageData
 </script>
-<article>
+<article class="grid">
+	<div class="imagebg"></div>
 	<form action="?/register" method="post">
+		<div class="center">
+			<h1>Register</h1>
+		</div>
 		<!-- Grid -->
         <div class="grid">
 
@@ -38,3 +42,16 @@
 		<button type="submit">Submit</button>
 	</form>
 </article>
+
+<style>
+	.center{
+		text-align: center;
+	}
+
+	.imagebg{
+    background-color: #374956;
+    background-image: url("../../lib/styles/pics/photo-1598760122223-45f0f18a1bbd.jfif");
+    background-position: center;
+    background-size: cover;
+	}
+</style>
