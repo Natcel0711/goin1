@@ -21,7 +21,12 @@ export const actions:Actions = {
             const user = await getUser(email)
             if(user.error)
                 return {
-                    error:true,
+                    error:user.message,
+                    email:email
+                }
+            if(user.password !== password)
+                return {
+                    error: "wrong login credentials",
                     email:email
                 }
             cookies.set('sessionid', await createSession(user))

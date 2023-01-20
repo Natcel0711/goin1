@@ -4,7 +4,6 @@
 
     export let data:PageData
 	export let form:ActionData
-	console.log("form data: ", form)
 </script>
 <article class="grid">
 	<div class="imagebg"></div>

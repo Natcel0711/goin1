@@ -1,6 +1,8 @@
 <script lang="ts">
-	import type { PageData } from "./$types";
+	import type { ActionData, PageData } from "./$types";
     export let data:PageData
+    export let form:ActionData
+    console.log(form)
 </script>
 
 <article class="grid">
@@ -10,7 +12,7 @@
 		<h2>Start making your life easier</h2>
 	  </hgroup>
 	  <form action="?/login" method="post">
-		<input type="email" value={data.email ?? ''} id="email" name="email" placeholder="Email address" required />
+		<input type="email" value={form?.email ?? ''} id="email" name="email" placeholder="Email address" required />
 		<input type="password" id="password" name="password" placeholder="Password" required />
 		<fieldset>
 		  <label for="remember">
