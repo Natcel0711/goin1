@@ -18,8 +18,7 @@ export const actions:Actions = {
             // Se busca user por BD
             // Si es valido pues redirect a home
             // Si no pues algun error se de vuelve para el UI
-            const user = await getUser(email, password)
-            console.log(user)
+            const user = await getUser(email)
             if(user.error)
                 return {
                     error:true,

@@ -1,8 +1,10 @@
 <script lang="ts">
-	import type { PageData } from "./$types";
+	import type { ActionData, PageData } from "./$types";
 
 
     export let data:PageData
+	export let form:ActionData
+	console.log("form data: ", form)
 </script>
 <article class="grid">
 	<div class="imagebg"></div>
@@ -31,7 +33,7 @@
 		<small>We'll never share your email with anyone else.</small>
 
 		<label for="email">Email address</label>
-		<input type="email" value={data.email ?? ''} id="email" name="email" placeholder="Email address" required />
+		<input type="email" value={form?.email ?? ''} id="email" name="email" placeholder="Email address" required />
 		<small>We'll never share your email with anyone else.</small>
 
 		<!-- Markup example 2: input is after label -->

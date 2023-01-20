@@ -13,7 +13,7 @@ export const getUserInformation = async (sessionID:string | undefined):Promise<U
     return user
 }
 
-export const getUser = async (email:String, password:String) => {
+export const getUser = async (email:String) => {
     //buscar en api
     let response = await fetch('http://localhost:8080/users/ByEmail/' + email).then(x => x.json())
     return response
@@ -44,7 +44,6 @@ export const RegisterUser = async(user:User) => {
         body:JSON.stringify(user)
     });
     let data = await response.json()
-    console.log(data)
     if(!data.Success)
         return undefined
     return data.ID

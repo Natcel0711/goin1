@@ -1,4 +1,4 @@
-import { createSession, RegisterUser, type User } from "$lib/models/user";
+import { createSession, getUser, RegisterUser, type User } from "$lib/models/user";
 import { redirect, type Actions } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 
@@ -17,6 +17,12 @@ export const actions:Actions = {
             password: `${data.password}`,
             username: `${data.username}`
         }
+        let existingUser = await getUser(user.email)
+        if(existingUser.id)
+            return {
+                error: "User exists",
+                email:user.email
+            }
         let response = await RegisterUser(user)
         if(!response)
             return {
