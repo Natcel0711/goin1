@@ -1,6 +1,7 @@
 import { createSession, getUser, RegisterUser, type User } from "$lib/models/user";
 import { redirect, type Actions } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
+import bcrypt from 'bcrypt'
 
 export const load = (async ({ locals }) => {
     if(locals.user)
@@ -14,9 +15,10 @@ export const actions:Actions = {
         let user:User = {
             name: `${data.firstname} ${data.lastname}`,
             email: `${data.email}`,
-            password: `${data.password}`,
+            password: await bcrypt.hash(data.password.toString(), 10),
             username: `${data.username}`
         }
+        console.log(user)
         let existingUser = await getUser(user.email)
         if(existingUser.id)
             return {

@@ -2,14 +2,14 @@
 	import type { ActionData, PageData } from "./$types";
     export let data:PageData
     export let form:ActionData
-    console.log(form)
+    let loading = false
 </script>
 
 <article class="grid">
 	<div>
 	  <hgroup>
 		<h1>Sign in</h1>
-		<h2>Start making your life easier</h2>
+		<h2>Please submit your account credentials below</h2>
 	  </hgroup>
 	  <form action="?/login" method="post">
 		<input type="email" value={form?.email ?? ''} id="email" name="email" placeholder="Email address" required />
@@ -20,7 +20,7 @@
 			Remember me
 		  </label>
 		</fieldset>
-		<button type="submit" class="contrast">Login</button>
+		<button aria-busy={loading} type="submit" class="contrast">Login</button>
 	  </form>
 	</div>
 	<div></div>
@@ -28,14 +28,6 @@
 
 
   <style>
-	/* Grid */
-body > main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: calc(100vh - 7rem);
-    padding: 1rem 0;
-  }
   
   article {
     padding: 0;
@@ -47,9 +39,6 @@ body > main {
   }
   
   @media (min-width: 576px) {
-    body > main {
-      padding: 1.25rem 0;
-    }
   
     article div {
       padding: 1.25rem;
@@ -57,19 +46,12 @@ body > main {
   }
   
   @media (min-width: 768px) {
-    body > main {
-      padding: 1.5rem 0;
-    }
-  
     article div {
       padding: 1.5rem;
     }
   }
   
   @media (min-width: 992px) {
-    body > main {
-      padding: 1.75rem 0;
-    }
   
     article div {
       padding: 1.75rem;
@@ -77,21 +59,12 @@ body > main {
   }
   
   @media (min-width: 1200px) {
-    body > main {
-      padding: 2rem 0;
-    }
   
     article div {
       padding: 2rem;
     }
   }
-  
-  /* Nav */
-  summary[role="link"].secondary:is([aria-current],:hover,:active,:focus) {
-    background-color: transparent;
-    color: var(--secondary-hover);
-  }
-  
+
   /* Hero Image */
   article div:nth-of-type(2) {
     display: none;
@@ -107,8 +80,4 @@ body > main {
     }
   }
   
-  /* Footer */
-  body > footer {
-    padding: 1rem 0;
-  }
   </style>

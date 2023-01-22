@@ -1,6 +1,7 @@
 import { redirect, type Actions } from "@sveltejs/kit";
 import { createSession, getUser } from "$lib/models/user";
 import type { PageServerLoad } from "./$types";
+import bcrypt from 'bcrypt'
 
 
 export const load = (async ({ locals }) => {
@@ -24,9 +25,11 @@ export const actions:Actions = {
                     error:user.message,
                     email:email
                 }
-            if(user.password !== password)
+            const userPassword = await bcrypt.compare(password, user.password)
+            console.log(userPassword)
+            if(!userPassword)
                 return {
-                    error: "wrong login credentials",
+                    error: 'wrong credentials',
                     email:email
                 }
             cookies.set('sessionid', await createSession(user))

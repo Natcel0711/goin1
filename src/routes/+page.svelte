@@ -8,7 +8,10 @@
 {#if data.user}
 <article>
 	<header></header>
-	<h1>Hello {data.user.name}</h1>
+	<h1 class="headerName">Hello {data.user.name}</h1>
+	<hr class="solid">
+	<h3>Summary</h3>
+	<div class="grid"></div>
 	<footer></footer>
 </article>
 {:else}
@@ -18,3 +21,12 @@
 	<footer></footer>
 </article>
 {/if}
+
+<style>
+	hr.solid{
+		border-top: 3px solid #bbb;
+	}
+	h1.headerName{
+		margin-bottom: 0px;
+	}
+</style>
