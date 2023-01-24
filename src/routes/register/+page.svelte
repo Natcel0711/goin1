@@ -27,7 +27,7 @@
         
           </div>
 
-          <label for="email">Username</label>
+          <label for="username">Username</label>
 		<input type="username" id="username" name="username" placeholder="Username" required />
 		<small>We'll never share your email with anyone else.</small>
 
@@ -51,8 +51,11 @@
 
 	.imagebg{
     background-color: #374956;
-    background-image: url("../../lib/styles/pics/photo-1598760122223-45f0f18a1bbd.jfif");
+    background-image: url("https://images.unsplash.com/photo-1592334737309-2b3f5c2fe32c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80");
     background-position: center;
     background-size: cover;
+	}
+	button{
+		background-color: #374956;
 	}
 </style>

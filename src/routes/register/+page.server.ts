@@ -18,7 +18,6 @@ export const actions:Actions = {
             password: await bcrypt.hash(data.password.toString(), 10),
             username: `${data.username}`
         }
-        console.log(user)
         let existingUser = await getUser(user.email)
         if(existingUser.id)
             return {
