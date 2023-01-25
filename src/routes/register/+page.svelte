@@ -1,20 +1,14 @@
 <script lang="ts">
 	import { enhance, type SubmitFunction } from "$app/forms";
 	import toast from "svelte-french-toast";
-	import type { ActionData, PageData } from "./$types";
+	import type { ActionData } from "./$types";
 
-
-    export let data:PageData
 	export let form:ActionData
 
 	let email:string
 	let pass:string
 
-	const OnSubmitLogin: SubmitFunction = ({ form, data, action, cancel }) => {
-		console.log('FORM: ', form);
-		console.log('DATA: ', data);
-		console.log('ACTION: ', action);
-
+	const OnSubmitLogin: SubmitFunction = ({  }) => {
 		return async ({ result, update }) => {
 			switch (result.type) {
 				case 'failure':
