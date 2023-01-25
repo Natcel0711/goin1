@@ -26,7 +26,6 @@ export const createSession = async (user:User):Promise<string> => {
         body:JSON.stringify(user)
     });
     let data = await response.json()
-    console.log(data)
     if(!data.Success)
         return ""
     return data.ID
@@ -35,7 +34,6 @@ export const createSession = async (user:User):Promise<string> => {
 export const getAllUserTest = async () => {
     //buscar en api
     let users = await fetch('http://localhost:8080/users/').then(x => x.json()) as Array<User>
-    console.log(users)
 }
 
 export const RegisterUser = async(user:User) => {

@@ -10,7 +10,6 @@ export const load: PageServerLoad = async () => {
 export const actions: Actions = {
   default({ cookies }) {
     // eat the cookie
-    console.log("logging otu")
     cookies.set('sessionid', '', {
       path: '/',
       expires: new Date(0),

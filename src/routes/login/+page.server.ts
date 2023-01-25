@@ -1,4 +1,4 @@
-import { redirect, type Actions } from "@sveltejs/kit";
+import { fail, redirect, type Actions } from "@sveltejs/kit";
 import { createSession, getUser } from "$lib/models/user";
 import type { PageServerLoad } from "./$types";
 import bcrypt from 'bcrypt'
@@ -21,24 +21,19 @@ export const actions:Actions = {
             // Si no pues algun error se de vuelve para el UI
             const user = await getUser(email)
             if(user.error)
-                return {
-                    error:user.message,
+                return fail(400, {
                     email:email
-                }
+                })
             const userPassword = await bcrypt.compare(password, user.password)
-            console.log(userPassword)
             if(!userPassword)
-                return {
-                    error: 'wrong credentials',
-                    email:email
-                }
+            return fail(400, {
+                email:email
+            })
             cookies.set('sessionid', await createSession(user))
         } catch (error) {
-            console.log("Error:", error)
-            return {
-                error: true,
-                email: data.email.toString()
-            }
+            return fail(400, {
+                email:''
+            })
         }
         //cookies.set('sessionid', "123")
         throw redirect(303, '/')
