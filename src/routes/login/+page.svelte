@@ -6,17 +6,17 @@
 	export let data: PageData;
 	export let form: ActionData;
 	let loading = false;
-	
+  let pass:string
 	const OnSubmitLogin: SubmitFunction = ({ form, data, action, cancel }) => {
 		console.log('FORM: ', form);
 		console.log('DATA: ', data);
 		console.log('ACTION: ', action);
 
 		return async ({ result, update }) => {
-			console.log('RESULT: ', result);
 			switch (result.type) {
 				case 'failure':
 					toast.error('wrong credentials!');
+          pass = ''
 					break;
 				case 'redirect':
 					toast.success(Hello());
@@ -27,6 +27,8 @@
 			update();
 		};
 	};
+
+  
 </script>
 
 <article class="grid">
@@ -44,7 +46,7 @@
 				placeholder="Email address"
 				required
 			/>
-			<input type="password" id="password" name="password" placeholder="Password" required />
+			<input bind:value={pass} type="password" id="password" name="password" placeholder="Password" required />
 			<fieldset>
 				<label for="remember">
 					<input type="checkbox" role="switch" id="remember" name="remember" />

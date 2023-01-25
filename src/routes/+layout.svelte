@@ -3,7 +3,8 @@
     import '@picocss/pico'
     import '../app.css'
     import { Toaster } from 'svelte-french-toast';
-    export let data
+	import type { PageData } from './$types';
+    export let data:PageData
 </script>
 
 <Nav user={data.user} />
