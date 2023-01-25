@@ -4,7 +4,7 @@
 <form action="/logout" method="post">
     <nav style="margin-left: 10px;margin-right: 10px;">
         <ul>
-          <li><strong>GoIn1</strong></li>
+          <li><strong></strong></li>
         </ul>
         <ul>
           {#if !user}

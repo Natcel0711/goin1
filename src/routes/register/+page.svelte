@@ -1,13 +1,40 @@
 <script lang="ts">
+	import { enhance, type SubmitFunction } from "$app/forms";
+	import toast from "svelte-french-toast";
 	import type { ActionData, PageData } from "./$types";
 
 
     export let data:PageData
 	export let form:ActionData
+
+	let email:string
+	let pass:string
+
+	const OnSubmitLogin: SubmitFunction = ({ form, data, action, cancel }) => {
+		console.log('FORM: ', form);
+		console.log('DATA: ', data);
+		console.log('ACTION: ', action);
+
+		return async ({ result, update }) => {
+			switch (result.type) {
+				case 'failure':
+					toast.error(result?.data?.error);
+					email = ''
+					pass = ''
+					break;
+				case 'redirect':
+					toast.success("account created! 🎆");
+					break;
+				default:
+					break;
+			}
+			update();
+		};
+	};
 </script>
 <article class="grid">
 	<div class="imagebg"></div>
-	<form action="?/register" method="post">
+	<form action="?/register" method="post" use:enhance={OnSubmitLogin}>
 		<div class="center">
 			<h1>Register</h1>
 		</div>
@@ -17,12 +44,12 @@
             <!-- Markup example 1: input is inside label -->
             <label for="firstname">
               First name
-              <input type="text" id="firstname" name="firstname" placeholder="First name" required>
+              <input type="text" value={form?.FirstName ?? ''} id="firstname" name="firstname" placeholder="First name" required>
             </label>
         
             <label for="lastname">
               Last name
-              <input type="text" id="lastname" name="lastname" placeholder="Last name" required>
+              <input type="text" value={form?.LastName ?? ''} id="lastname" name="lastname" placeholder="Last name" required>
             </label>
         
           </div>
@@ -32,12 +59,12 @@
 		<small>We'll never share your email with anyone else.</small>
 
 		<label for="email">Email address</label>
-		<input type="email" value={form?.email ?? ''} id="email" name="email" placeholder="Email address" required />
+		<input type="email" bind:value={email}  id="email" name="email" placeholder="Email address" required />
 		<small>We'll never share your email with anyone else.</small>
 
 		<!-- Markup example 2: input is after label -->
 		<label for="password">Password</label>
-		<input type="password" id="password" name="password" placeholder="Password" required />
+		<input type="password" bind:value={pass} id="password" name="password" placeholder="Password" required />
 
 		<!-- Button -->
 		<button type="submit">Submit</button>

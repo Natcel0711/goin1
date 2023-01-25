@@ -1,5 +1,5 @@
 import { createSession, getUser, RegisterUser, type User } from "$lib/models/user";
-import { redirect, type Actions } from "@sveltejs/kit";
+import { fail, redirect, type Actions } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 import bcrypt from 'bcrypt'
 
@@ -20,16 +20,18 @@ export const actions:Actions = {
         }
         let existingUser = await getUser(user.email)
         if(existingUser.id)
-            return {
-                error: "User exists",
-                email:user.email
-            }
+            return fail(400, {
+                error: "this email is already in use! 😬",
+                FirstName: user.name.split(' ')[0],
+                LastName: user.name.split(' ')[1]
+            })
         let response = await RegisterUser(user)
         if(!response)
-            return {
-                error:true,
-                email:data.email
-            }
+            return fail(400, {
+                error:"something happened",
+                FirstName: user.name.split(' ')[0],
+                LastName: user.name.split(' ')[1]
+            })
         throw redirect(303, "/login")
     }
 }
