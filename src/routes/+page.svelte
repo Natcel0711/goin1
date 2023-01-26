@@ -7,10 +7,8 @@
 
 {#if data.user}
 <article>
-	<header></header>
 	<h1 class="headerName">Hello {data.user.name}</h1>
 	<hr class="solid">
-	<h3>Summary</h3>
 	<div class="grid">
 		<article>
 			<header>Company</header>
@@ -23,7 +21,6 @@
 			<header>Documents</header>
 		</article>
 	</div>
-	<footer></footer>
 </article>
 {:else}
 <article class="mainArt">
