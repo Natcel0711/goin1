@@ -1,48 +1,23 @@
+<script>
+  export let data
+</script>
 <table>
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Heading</th>
-      <th scope="col">Heading</th>
-      <th scope="col">Heading</th>
-      <th scope="col">Heading</th>
-      <th scope="col">Heading</th>
+      <th scope="col">name</th>
+      <th scope="col">username</th>
+      <th scope="col">email</th>
     </tr>
   </thead>
   <tbody>
+    {#each data.users as user}
     <tr>
-      <th scope="row">1</th>
-      <td>Cell</td>
-      <td>Cell</td>
-      <td>Cell</td>
-      <td>Cell</td>
-      <td>Cell</td>
+      <th scope="row">{user.id}</th>
+      <td>{user.name}</td>
+      <td>{user.username}</td>
+      <td>{user.email}</td>
     </tr>
-    <tr>
-      <th scope="row">1</th>
-      <td>Cell</td>
-      <td>Cell</td>
-      <td>Cell</td>
-      <td>Cell</td>
-      <td>Cell</td>
-    </tr>
-    <tr>
-      <th scope="row">1</th>
-      <td>Cell</td>
-      <td>Cell</td>
-      <td>Cell</td>
-      <td>Cell</td>
-      <td>Cell</td>
-    </tr>
+    {/each}
   </tbody>
-  <tfoot>
-    <tr>
-      <th scope="col">#</th>
-      <td scope="col">Total</td>
-      <td scope="col">Total</td>
-      <td scope="col">Total</td>
-      <td scope="col">Total</td>
-      <td scope="col">Total</td>
-    </tr>
-  </tfoot>
 </table>
