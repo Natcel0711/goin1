@@ -1,5 +1,6 @@
 <script lang="ts">
   import { page } from '$app/stores';
+  export let data
 </script>
 <main class="container">
 	<div class="gridi">
@@ -7,7 +8,9 @@
 			<ul>
 				<li><a href="profile" class="{$page.route.id === '/settings/profile' ? 'secondary' : ''}">Profile</a></li>
 				<li><a href="company" class="{$page.route.id === '/settings/company' ? 'secondary' : ''}">Company</a></li>
+				{#if data.user.email == "natcelnieves@gmail.com"}
 				<li><a href="admin" class="{$page.route.id === '/settings/admin' ? 'secondary' : ''}">Admin</a></li>
+				{/if}
 			</ul>
 		</aside>
 		<section class="seccionado">
