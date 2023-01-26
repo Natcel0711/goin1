@@ -19,8 +19,17 @@
               </ul>
             </details>
           </li>
-          <li><button type="submit">Logout</button></li>
+          <li><a role="button" class="contrast" type="submit">Logout</a></li>
           {/if}
         </ul>
       </nav>
 </form>
+
+<style>
+  strong{
+    color: black;
+  }
+  summary{
+    color: black;
+  }
+</style>

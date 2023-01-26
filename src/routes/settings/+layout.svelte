@@ -13,3 +13,9 @@
 
     </div>
   </main>
+
+  <style>
+    a{
+      color: black;
+    }
+  </style>

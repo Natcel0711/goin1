@@ -9,11 +9,7 @@
         </label>
         
     </div>
-    <button>Save</button>
+    <a href="#" role="button" class="secondary">Save</a>
 </form>
 <style>
-    button{
-        width: fit-content;
-        height: max-content;
-    }
 </style>
