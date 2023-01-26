@@ -26,9 +26,9 @@ export const actions:Actions = {
                 })
             const userPassword = await bcrypt.compare(password, user.password)
             if(!userPassword)
-            return fail(400, {
-                email:email
-            })
+                return fail(400, {
+                    email:email
+                })
             cookies.set('sessionid', await createSession(user))
         } catch (error) {
             return fail(400, {

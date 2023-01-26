@@ -1,7 +1,22 @@
-<script>
+<script lang="ts">
+	import { enhance, type SubmitFunction } from "$app/forms";
+
+
   export let user
+  let loading = false
+  let btnPlaceholder = "Logout"
+
+  const OnSubmitLogout:SubmitFunction = ({  }) => {
+    btnPlaceholder = "Please wait..."
+		loading = true
+		return async ({ result, update }) => {
+      btnPlaceholder = "Logout"
+			loading = false
+			update();
+		};
+	};
 </script>
-<form action="/logout" method="post">
+<form action="/logout" method="post" use:enhance={OnSubmitLogout}>
     <nav style="margin-left: 10px;margin-right: 10px;">
         <ul>
           <li><a href="/"><strong>Go In 1</strong></a></li>
@@ -19,7 +34,7 @@
               </ul>
             </details>
           </li>
-          <li><button class="contrast" type="submit">Logout</button></li>
+          <li><button aria-busy={loading} class="secondary" type="submit">{btnPlaceholder}</button></li>
           {/if}
         </ul>
       </nav>

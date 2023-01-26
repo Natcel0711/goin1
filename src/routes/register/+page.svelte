@@ -50,7 +50,7 @@
 
           <label for="username">Username</label>
 		<input type="username" id="username" name="username" placeholder="Username" required />
-		<small>We'll never share your email with anyone else.</small>
+		<small>Pick something unique!</small>
 
 		<label for="email">Email address</label>
 		<input type="email" bind:value={email}  id="email" name="email" placeholder="Email address" required />
@@ -59,6 +59,7 @@
 		<!-- Markup example 2: input is after label -->
 		<label for="password">Password</label>
 		<input type="password" bind:value={pass} id="password" name="password" placeholder="Password" required />
+		<small>Pick something you will remember!</small>
 
 		<!-- Button -->
 		<button type="submit">Submit</button>

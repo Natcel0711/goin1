@@ -6,17 +6,16 @@
 	export let data: PageData;
 	export let form: ActionData;
 	let loading = false;
+	let btnPlaceholder = "Login"
   let pass:string
-	const OnSubmitLogin: SubmitFunction = ({ form, data, action, cancel }) => {
-		console.log('FORM: ', form);
-		console.log('DATA: ', data);
-		console.log('ACTION: ', action);
-
+	const OnSubmitLogin: SubmitFunction = ({  }) => {
+		btnPlaceholder = "Please wait..."
+		loading = true
 		return async ({ result, update }) => {
 			switch (result.type) {
 				case 'failure':
 					toast.error('wrong credentials!');
-          pass = ''
+          			pass = ''
 					break;
 				case 'redirect':
 					toast.success(Hello());
@@ -24,6 +23,8 @@
 				default:
 					break;
 			}
+			btnPlaceholder = "Login"
+			loading = false
 			update();
 		};
 	};
@@ -53,7 +54,7 @@
 					Remember me
 				</label>
 			</fieldset>
-			<button aria-busy={loading} type="submit" class="contrast">Login</button>
+			<button aria-busy={loading} type="submit" class="contrast">{btnPlaceholder}</button>
 		</form>
 	</div>
 	<div />

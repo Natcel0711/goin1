@@ -9,19 +9,19 @@ export const getUserInformation = async (sessionID:string | undefined):Promise<U
     //get user by session id
     if(!sessionID)
         sessionID = ''
-    let user = await fetch('http://localhost:8080/users/BySession/' + sessionID).then(x => x.json())
+    let user = await fetch('https://gouser-production.up.railway.app/users/BySession/' + sessionID).then(x => x.json())
     return user
 }
 
 export const getUser = async (email:String) => {
     //buscar en api
-    let response = await fetch('http://localhost:8080/users/ByEmail/' + email).then(x => x.json())
+    let response = await fetch('https://gouser-production.up.railway.app/users/ByEmail/' + email).then(x => x.json())
     return response
 }
 
 export const createSession = async (user:User):Promise<string> => {
     //create session id
-    let response = await fetch('http://localhost:8080/users/Session/', {
+    let response = await fetch('https://gouser-production.up.railway.app/users/Session/', {
         method:'POST',
         body:JSON.stringify(user)
     });
@@ -33,12 +33,12 @@ export const createSession = async (user:User):Promise<string> => {
 
 export const getAllUserTest = async () => {
     //buscar en api
-    let users = await fetch('http://localhost:8080/users/').then(x => x.json()) as Array<User>
+    let users = await fetch('https://gouser-production.up.railway.app/users/').then(x => x.json()) as Array<User>
     return users
 }
 
 export const RegisterUser = async(user:User) => {
-    let response = await fetch('http://localhost:8080/users/', {
+    let response = await fetch('https://gouser-production.up.railway.app/users/', {
         method:'POST',
         body:JSON.stringify(user)
     });
