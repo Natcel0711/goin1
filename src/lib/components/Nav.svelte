@@ -19,7 +19,7 @@
               </ul>
             </details>
           </li>
-          <li><a role="button" class="contrast" type="submit">Logout</a></li>
+          <li><button class="contrast" type="submit">Logout</button></li>
           {/if}
         </ul>
       </nav>
@@ -31,5 +31,8 @@
   }
   summary{
     color: black;
+  }
+  .contrast{
+    background-color: dimgray;
   }
 </style>

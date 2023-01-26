@@ -1,12 +1,15 @@
 <script lang="ts">
-    export let data
+    import type { PageData } from "./$types";
+
+
+    export let data:PageData;
 </script>
 <form>
     <div class="gridi">
         <div class="asido">
             <label for="username">
                 Username
-                <input type="text" id="username" name="username" placeholder="Username" required />
+                <input value={data.user?.username} type="text" id="username" name="username" placeholder="Username" required />
             </label>
         </div>
         <div class="seccionado">

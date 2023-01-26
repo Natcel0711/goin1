@@ -34,6 +34,7 @@ export const createSession = async (user:User):Promise<string> => {
 export const getAllUserTest = async () => {
     //buscar en api
     let users = await fetch('http://localhost:8080/users/').then(x => x.json()) as Array<User>
+    return users
 }
 
 export const RegisterUser = async(user:User) => {
